@@ -29,12 +29,13 @@ public class UserRepositoryImpl implements UserRepository{
 
     @Override
     public User getUserByUsername(String username) {
-        return (User) entityManager.createQuery("select u from User u where u.username = ?1").setParameter(1, username).getSingleResult();
+        return (User) entityManager.createQuery("select u from User u left join fetch u.roles where u.username = ?1").setParameter(1, username).getSingleResult();
+
     }
 
     @Override
     public List<User> getAllUsers() {
-        return entityManager.createQuery("select u from User u").getResultList();
+        return entityManager.createQuery("select u from User u left join fetch u.roles").getResultList();
     }
 
     @Override
