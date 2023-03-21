@@ -12,7 +12,7 @@ public interface UserRepository {
 
     void save(User user);
 
-    @Query("Select u from User u left join fetch u.roles where u.username=:username")
+
     User getUserByUsername(String username);
 
     List<User> getAllUsers();
