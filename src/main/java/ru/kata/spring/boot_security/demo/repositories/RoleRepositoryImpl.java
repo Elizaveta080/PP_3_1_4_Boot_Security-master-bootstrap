@@ -25,6 +25,7 @@ public class RoleRepositoryImpl implements RoleRepository{
     @Override
     public Role getRoleByName(String name) {
         return (Role) entityManager.createQuery("select rl from Role rl where rl.name = ?1").setParameter(1, name).getSingleResult();
+
     }
 
     @Override
